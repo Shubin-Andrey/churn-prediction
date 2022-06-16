@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block title %}Введите: 'Geography', 'Gender', 'Tenure', 'HasCrCard', 'IsActiveMember',
+                        'CreditScore', 'Age', 'Balance', 'NumOfProducts', 'EstimatedSalary'{% endblock %}
+{% block content %}
+<h1 class="text-center">Данные</h1>
+<br>
+<div class="row d-flex justify-content-center">
+<div class="col-md-6">
+    <form method="POST" action="{{ url_for('predict_form') }}">
+        <div class="form-group row">
+            {{ form.hidden_tag() }}
+            {% for field in form if field.widget.input_type != 'hidden' %}
+                {{ field.label(class="col-form-label col-sm-4") }}
+                {{ field(class="form-control col-sm-6") }}
+            {% endfor %}
+        </div>
+         <div class="text-center">
+        <button type="submit" class="btn btn-info">Предсказать</button>
+         </div>
+    </form>
+</div>
+</div>
+{% endblock %}
